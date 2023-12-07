@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- en el archivo bebidas/templates/home.html -->
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="mb-4 text-center">Página Principal</h2>
+            <p class="lead">Bienvenido a nuestra cafetería virtual. Descubre nuestras deliciosas bebidas.</p>
+            
+            {% if bebidas %}
+              <div class="row">
+                {% for bebida in bebidas %}
+                  <div class="col-md-4 mb-4">
+                    <div class="card">
+                      <img src="{{ bebida.imagen.url }}" class="card-img-top" alt="{{ bebida.nombre }}">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ bebida.nombre }}</h5>
+                        <p class="card-text">{{ bebida.descripcion }}</p>
+                        <p class="card-text">Precio: ${{ bebida.precio }}</p>
+                        <!-- Puedes agregar más detalles o un enlace a la página de detalles de la bebida -->
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            {% else %}
+              <p>No hay bebidas disponibles actualmente.</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+</body>
+</html>

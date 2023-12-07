@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Agrega la referencia a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-rz6X4CggXp7ktNH0d6brMPz3CS6T5+q7oK4zmfXrSRfRIEXCymG3zAzjf1qT0UuB" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #e5d1b8; /* Warm background color for a vintage feel */
+            font-family: 'Algerian', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #3d281b; /* Dark brown heading color */
+            text-align: center;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease-in-out;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row; /* Display content in a row */
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-img-top {
+            flex: 1; /* Make the image take up 1/3 of the card width */
+            height: auto;
+            max-width: 15%; /* Make the image responsive */
+        }
+
+        .card-body {
+            flex: 2; /* Make the text take up 2/3 of the card width */
+            padding: 20px;
+            background-color: #f1e0cc; /* Light brown background for the text */
+            border-radius: 0 8px 8px 0; /* Rounded corners on the right side */
+        }
+
+        .card-title {
+            font-size: 24px;
+            color: #3d281b; /* Dark brown text color */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 16px;
+            color: #5a483b; /* Brown text color */
+        }
+    </style>
+</head>
+<body>
+
+{% block content %}
+  <div class="container">
+    <h2 class="mb-4">BIENVENIDO A LA CAFETERIA "MEDIA LUNA"</h2>
+    <div class="row">
+      {% for bebida in bebidas %}
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="{{ bebida.imagen.url }}" class="card-img-top" alt="{{ bebida.nombre }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ bebida.nombre }}</h5>
+              <p class="card-text">{{ bebida.descripcion }}</p>
+              <p class="card-text">Precio: ${{ bebida.precio }}</p>
+              <!-- Puedes agregar más detalles o un enlace a la página de detalles de la bebida -->
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+<!-- Agrega la referencia a Bootstrap JS y Popper.js (si no los tienes ya) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofSrbV3DkFaE5gDD0epFQj6pddHJF2ii2" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
+
